@@ -7,6 +7,6 @@ import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   integrations: [mdx(), preact(), react(), sitemap()],
-  base: `mountmour.com`,
+  base: `/`,
   site: `https://mountmour.com`
 })
