@@ -7,6 +7,6 @@ import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   integrations: [mdx(), preact(), react(), sitemap()],
-  base: `/`,
-  site: `https://advanced-astro.dev`
+  base: `mountmour.com`,
+  site: `https://mountmour.com`
 })
