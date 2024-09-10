@@ -10,7 +10,6 @@ $border-color_2: var(--theme-text-light);
   width: 48px;
   box-sizing: border-box;
   margin: 0;
-  padding: 0.33em 0.5em;
   overflow: visible;
   font-weight: 500;
   font-size: 1rem;
@@ -28,8 +27,7 @@ $border-color_2: var(--theme-text-light);
   transition-duration: 0.2s;
   transition-property: border-color, color;
   -webkit-font-smoothing: antialiased;
-  padding-left: 30px;
-  padding-right: 1rem;
+  padding: 0.33em 1rem 0.33em 30px;
 }
 .language-select-wrapper {
   .language-select {
@@ -51,6 +49,32 @@ $border-color_2: var(--theme-text-light);
     pointer-events: none;
   }
 }
+
+@media (min-width: 50em) {
+  .language-select {
+    width: 100%;
+  }
+}
+//.language-select-wrapper {
+//  .language-select {
+//    &:hover {
+//      color: $color_2;
+//      border-color: $border-color_2;
+//    }
+//    &:focus {
+//      color: $color_2;
+//      border-color: $border-color_2;
+//    }
+//  }
+//  color: $color_1;
+//  position: relative;
+//  > svg {
+//    position: absolute;
+//    top: 7px;
+//    left: 10px;
+//    pointer-events: none;
+//  }
+//}
 @media (min-width: 50em) {
   .language-select {
     width: 100%;

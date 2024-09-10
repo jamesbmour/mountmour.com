@@ -1,19 +1,19 @@
 /** @jsxImportSource react */
-import { useState, useCallback, useRef } from 'react'
-import { ALGOLIA } from '../../consts'
+import { useState, useCallback, useRef, type SetStateAction} from 'react'
+import {ALGOLIA} from '../../consts'
 import '@docsearch/css'
 import '../../styles/search.scss'
 
-import { createPortal } from 'react-dom'
+import {createPortal} from 'react-dom'
 import * as docSearchReact from '@docsearch/react'
 
 /** FIXME: This is still kinda nasty, but DocSearch is not ESM ready. */
 const DocSearchModal =
-  docSearchReact.DocSearchModal ||
-  (docSearchReact as any).default.DocSearchModal
+    docSearchReact.DocSearchModal ||
+    (docSearchReact as any).default.DocSearchModal
 const useDocSearchKeyboardEvents =
-  docSearchReact.useDocSearchKeyboardEvents ||
-  (docSearchReact as any).default.useDocSearchKeyboardEvents
+    docSearchReact.useDocSearchKeyboardEvents ||
+    (docSearchReact as any).default.useDocSearchKeyboardEvents
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,7 +29,7 @@ export default function Search() {
   }, [setIsOpen])
 
   const onInput = useCallback(
-    (e) => {
+      (e: { key: SetStateAction<string> }) => {
       setIsOpen(true)
       setInitialQuery(e.key)
     },
