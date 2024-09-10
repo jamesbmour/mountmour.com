@@ -1,5 +1,5 @@
 export const SITE = {
-  title: 'Documentation',
+  title: 'Mountmour',
   description: 'Your website description.',
   defaultLanguage: 'en-us'
 } as const
@@ -45,11 +45,11 @@ export const SIDEBAR: Sidebar = {
     'Ein weiterer Abschnitt': [{ text: 'Seite 4', link: 'de/page-4' }]
   },
   en: {
-    'Section Header': [
+    'Guide Books': [
       { text: 'Introduction', link: 'en/introduction' },
       { text: 'Page 2', link: 'en/page-2' },
       { text: 'Page 3', link: 'en/page-3' }
     ],
-    'Another Section': [{ text: 'Page 4', link: 'en/page-4' }]
+    'Living Room': [{ text: 'Page 4', link: 'en/page-4' }]
   }
 }
