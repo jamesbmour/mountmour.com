@@ -46,10 +46,23 @@ export const SIDEBAR: Sidebar = {
   },
   en: {
     'Guide Books': [
-      { text: 'Introduction', link: 'en/introduction' },
-      { text: 'Page 2', link: 'en/page-2' },
-      { text: 'Page 3', link: 'en/page-3' }
+      { text: 'Quick Guide', link: 'en/introduction' },
+      { text: 'Town Guide', link: 'en/town-guide' },
+      { text: 'Winter Activities', link: 'en/winter-activities' },
+      { text: 'Summer Activities', link: 'en/summer-activities' }
     ],
-    'Living Room': [{ text: 'Page 4', link: 'en/page-4' }]
+    'Kitchen & Living Room': [
+      { text: 'TV Remove', link: 'en/tv-remove' },
+      { text: 'Channel Guide', link: 'en/channel-guide' },
+      { text: 'Remote Control', link: 'en/remote-control' },
+      { text: 'Air Conditioner', link: 'en/air-conditioner' },
+      { text: 'WiFi', link: 'en/wifi' },
+      { text: 'Sonos', link: 'en/sonos' },
+      { text: 'Dishwasher', link: 'en/dishwasher' }
+    ],
+    'Bedroom & Bathroom': [
+      { text: 'Bedroom', link: 'en/bedroom' },
+      { text: 'Bathroom', link: 'en/bathroom' }
+    ]
   }
 }
