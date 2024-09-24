@@ -7,7 +7,11 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), preact(), react(), sitemap(), tailwind()],
+  integrations: [mdx(), preact(), react(), sitemap(), tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+  ],
   base: `/`,
   site: `https://mountmour.com`
 });
