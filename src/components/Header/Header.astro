@@ -14,8 +14,8 @@ type Props = {
 const { currentPage } = Astro.props
 const lang = getLanguageFromURL(currentPage)
 ---
-
-<header class="z-11 h-[var(--theme-navbar-height)] w-full bg-[var(--theme-navbar-bg)] flex items-center justify-center overflow-hidden sticky top-0 md:static md:py-8">
+<!-- class="bg-gray-900" aria-labelledby="footer-heading" -->
+<header class="bg-gray-900 z-11 h-[var(--theme-navbar-height)] w-full bg-[var(--theme-navbar-bg)] flex items-center justify-center overflow-hidden sticky top-0 md:static md:py-8">
   <SkipToContent />
   <nav class="flex items-center justify-end gap-4 w-full max-w-7xl px-4" title="Top Navigation">
     <div class="md:hidden">

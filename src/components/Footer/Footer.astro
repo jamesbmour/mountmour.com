@@ -1,11 +1,65 @@
 ---
-import AvatarList from './AvatarList.astro'
-type Props = {
-  path: string
-}
-const { path } = Astro.props
+const footerSections = [
+  // {
+  //   title: "Solutions",
+  //   links: [
+  //     { name: "Marketing", href: "#" },
+  //     { name: "Analytics", href: "#" },
+  //     { name: "Commerce", href: "#" },
+  //     { name: "Insights", href: "#" },
+  //   ],
+  // },
+  {
+    title: "Support",
+    links: [
+      { name: "Contact", href: "#" },
+      { name: "Documentation", href: "#" },
+      // { name: "Guides", href: "#" },
+      // { name: "API Status", href: "#" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { name: "About", href: "#" },
+      { name: "Blog", href: "#" },
+      // { name: "Jobs", href: "#" },
+      // { name: "Press", href: "#" },
+      // { name: "Partners", href: "#" },
+    ],
+  },
+  // {
+  //   title: "Legal",
+  //   links: [
+  //     { name: "Claim", href: "#" },
+  //     { name: "Privacy", href: "#" },
+  //     { name: "Terms", href: "#" },
+  //   ],
+  // },
+];
 ---
 
-<footer class="mt-auto p-8 border-t-4 border-theme-divider">
-  <AvatarList path={path} />
+<footer class="bg-gray-900" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 lg:py-22">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <img class="h-7" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Company name">
+      <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+        {footerSections.map((section, index) => (
+          <div class={index % 2 === 0 ? "md:grid md:grid-cols-2 md:gap-8" : "mt-10 md:mt-0"}>
+            <div>
+              <h3 class="text-sm font-semibold leading-6 text-white">{section.title}</h3>
+              <ul role="list" class="mt-6 space-y-4">
+                {section.links.map((link) => (
+                  <li>
+                    <a href={link.href} class="text-sm leading-6 text-gray-300 hover:text-white">{link.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
 </footer>
