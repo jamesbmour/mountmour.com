@@ -6,14 +6,6 @@ type Props = {
 const { path } = Astro.props
 ---
 
-<footer>
+<footer class="mt-auto p-8 border-t-4 border-theme-divider">
   <AvatarList path={path} />
 </footer>
-
-<style>
-  footer {
-    margin-top: auto;
-    padding: 2rem;
-    border-top: 3px solid var(--theme-divider);
-  }
-</style>
