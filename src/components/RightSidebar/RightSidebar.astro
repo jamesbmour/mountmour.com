@@ -11,26 +11,9 @@ type Props = {
 const { headings, editUrl } = Astro.props
 ---
 
-<nav class="sidebar-nav" aria-labelledby="grid-right">
-  <div class="sidebar-nav-inner">
-    <TableOfContents client:media="(min-width: 50em)" headings={headings} />
+<nav class="w-full sticky top-0" aria-labelledby="grid-right">
+  <div class="h-full p-0 pt-[var(--doc-padding)] overflow-auto">
+    <TableOfContents client:media="(min-width: 40em)" headings={headings} />
     <MoreMenu editHref={editUrl} />
-
-    
   </div>
 </nav>
-
-<style>
-  .sidebar-nav {
-    width: 100%;
-    position: sticky;
-    top: 0;
-  }
-
-  .sidebar-nav-inner {
-    height: 100%;
-    padding: 0;
-    padding-top: var(--doc-padding);
-    overflow: auto;
-  }
-</style>
