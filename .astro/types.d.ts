@@ -262,27 +262,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/page-2.mdx": {
-	id: "en/page-2.mdx";
-  slug: "en/page-2";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/page-3.mdx": {
-	id: "en/page-3.mdx";
-  slug: "en/page-3";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/page-4.mdx": {
-	id: "en/page-4.mdx";
-  slug: "en/page-4";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
 "en/remote-control.mdx": {
 	id: "en/remote-control.mdx";
   slug: "en/remote-control";
