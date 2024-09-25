@@ -38,11 +38,13 @@ export type Sidebar = Record<
 export const SIDEBAR: Sidebar = {
   de: {
     Überschrift: [
+      { text: 'Quick Guide', link: 'en/introduction' }
     ],
   },
   en: {
     'Guide Books': [
       { text: 'Quick Guide', link: 'en/introduction' },
+      { text: 'Maps', link: 'en/maps' },
       { text: 'Town Guide', link: 'en/town-guide' },
       { text: 'Winter Activities', link: 'en/winter-activities' },
       { text: 'Summer Activities', link: 'en/summer-activities' }
