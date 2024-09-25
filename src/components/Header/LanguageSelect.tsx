@@ -24,14 +24,16 @@ const LanguageSelect: FunctionComponent<{ lang: string }> = ({ lang }) => {
           d="M53.6,60.6c-10-4-16-9-22-14c0,0,1.3,1.3,0,0c-6,5-20,13-20,13l-4-6c8-5,10-6,19-13c-2.1-1.9-12-13-13-19h8          c4,9,10,14,10,14c10-8,10-19,10-19h8c0,0-1,13-12,24l0,0c5,5,10,9,19,13L53.6,60.6z M1.6,16.6h56v-8h-23v-7h-9v7h-24V16.6z"
         />
       </svg>
+      <label htmlFor="language-select" className="sr-only">Select Language</label>
       <select
+        id="language-select"
         className="language-select"
         value={lang}
         onChange={(e) => {
-          const newLang = e.target.value
-          let actualDest = window.location.pathname.replace(langPathRegex, '/')
-          if (actualDest == '/') actualDest = `/introduction`
-          window.location.pathname = '/' + newLang + actualDest
+          const newLang = (e.target as HTMLSelectElement).value;
+          let actualDest = window.location.pathname.replace(langPathRegex, '/');
+          if (actualDest === '/') actualDest = `/introduction`;
+          window.location.pathname = '/' + newLang + actualDest;
         }}
       >
         {Object.entries(KNOWN_LANGUAGES).map(([key, value]) => {
@@ -39,11 +41,11 @@ const LanguageSelect: FunctionComponent<{ lang: string }> = ({ lang }) => {
             <option value={value} key={value}>
               {key}
             </option>
-          )
+          );
         })}
       </select>
     </div>
-  )
-}
+  );
+};
 
-export default LanguageSelect
+export default LanguageSelect;
