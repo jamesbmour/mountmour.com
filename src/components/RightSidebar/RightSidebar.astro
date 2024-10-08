@@ -12,7 +12,7 @@ const { headings, editUrl } = Astro.props;
 ---
 
 <nav class="w-full sticky top-0 pt-4" aria-labelledby="grid-right">
-  <div class="h-full p-0 pt-[var(--doc-padding)] overflow-auto">
+  <div class="h-full p-0 pt-6 overflow-auto">
     <TableOfContents client:media="(min-width: 40em)" headings={headings} />
     <!-- <MoreMenu editHref={editUrl} /> -->
   </div>
