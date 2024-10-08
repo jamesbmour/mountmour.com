@@ -1,5 +1,14 @@
 declare module 'astro:content' {
 	interface Render {
+		'.mdoc': Promise<{
+			Content(props: Record<string, any>): import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+		}>;
+	}
+}
+
+declare module 'astro:content' {
+	interface Render {
 		'.mdx': Promise<{
 			Content: import('astro').MarkdownInstance<{}>['Content'];
 			headings: import('astro').MarkdownHeading[];
@@ -248,6 +257,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"en/heating.mdx": {
+	id: "en/heating.mdx";
+  slug: "en/heating";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "en/introduction.mdx": {
 	id: "en/introduction.mdx";
   slug: "en/introduction";
@@ -262,6 +278,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"en/quick-guide.mdx": {
+	id: "en/quick-guide.mdx";
+  slug: "en/quick-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "en/remote-control.mdx": {
 	id: "en/remote-control.mdx";
   slug: "en/remote-control";
@@ -272,6 +295,13 @@ declare module 'astro:content' {
 "en/sonos.mdx": {
 	id: "en/sonos.mdx";
   slug: "en/sonos";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/stove.mdx": {
+	id: "en/stove.mdx";
+  slug: "en/stove";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
