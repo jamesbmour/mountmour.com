@@ -67,8 +67,9 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
     return () => headingsObserver.disconnect()
   }, [toc.current])
 
-  const onLinkClick = (e) => {
-    setCurrentID(e.target.getAttribute('href').replace('#', ''))
+  const onLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = e.target as HTMLAnchorElement
+    setCurrentID(target.getAttribute('href')!.replace('#', ''))
   }
 
   return (
@@ -84,6 +85,7 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
               className={`header-link depth-${heading.depth} ${
                 currentID === heading.slug ? 'current-header-link' : ''
               }`.trim()}
+              key={heading.slug}
             >
               <a href={`#${heading.slug}`} onClick={onLinkClick}>
                 {unescape(heading.text)}
