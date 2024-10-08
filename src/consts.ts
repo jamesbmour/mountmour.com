@@ -66,6 +66,7 @@ export const SIDEBAR: Sidebar = {
       { text: 'Channel Guide', link: 'en/channel-guide' }, 
       { text: 'Remote Control', link: 'en/remote-control' },
       { text: 'Air Conditioner', link: 'en/air-conditioner' }, 
+      { text: 'Heating', link: 'en/heating' }, 
       { text: 'WiFi', link: 'en/wifi' }, 
       { text: 'Sonos', link: 'en/sonos' }, 
       { text: 'Dishwasher', link: 'en/dishwasher' }
