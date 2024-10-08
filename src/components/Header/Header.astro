@@ -47,30 +47,52 @@ const lang = getLanguageFromURL(currentPage);
   </nav>
 </header>
 
-<!-- Add the LeftSidebar component here, initially hidden on mobile -->
+<!-- Mobile sidebar -->
 <div
   id="mobile-sidebar"
   class="fixed inset-y-0 left-0 w-64 bg-gray-900 -translate-x-full transform transition-transform duration-200 ease-in-out z-30 md:hidden"
-  >
+>
   <LeftSidebar currentPage={currentPage} />
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const mobileMenu = document.getElementById(
-      "mobile-sidebar"
-    ) as HTMLElement | null;
-    const menuToggle = document.getElementById(
-      "menu-toggle"
-    ) as HTMLElement | null;
+    const mobileMenu = document.getElementById("mobile-sidebar") as HTMLElement | null;
+    const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
+    const body = document.body;
 
-    if (mobileMenu && menuToggle) {
-      menuToggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("-translate-x-full");
-      });
-    } else {
-      console.warn("Mobile menu or toggle button not found");
+    function closeMobileMenu() {
+      if (mobileMenu) {
+        mobileMenu.classList.add("-translate-x-full");
+        body.classList.remove("mobile-sidebar-toggle");
+      }
     }
+
+    function toggleMobileMenu() {
+      if (mobileMenu) {
+        mobileMenu.classList.toggle("-translate-x-full");
+        body.classList.toggle("mobile-sidebar-toggle");
+      }
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (mobileMenu && !mobileMenu.contains(e.target as Node) && !menuToggle?.contains(e.target as Node)) {
+        closeMobileMenu();
+      }
+    });
+
+    // Prevent clicks inside the menu from closing it
+    mobileMenu?.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
   });
 </script>
 
