@@ -2,32 +2,47 @@
 import { getLanguageFromURL } from '../../languages'
 import { SIDEBAR } from '../../consts'
 
+// Define the props type for the component
 type Props = {
   currentPage: string
 }
 
+// Destructure the currentPage prop from Astro.props
 const { currentPage } = Astro.props
+
+// Process the currentPage string to match the sidebar links
 const currentPageMatch = currentPage.endsWith('/')
   ? currentPage.slice(1, -1)
   : currentPage.slice(1)
+
+// Get the language code from the current URL
 const langCode = getLanguageFromURL(currentPage)
+
+// Get the sidebar structure for the current language
 const sidebar = SIDEBAR[langCode]
 ---
 
+<!-- Navigation component -->
 <nav aria-labelledby="grid-left" class="w-full mr-4">
+  <!-- Sidebar navigation list -->
   <ul class="nav-groups h-full py-8 overflow-x-visible overflow-y-auto max-h-screen">
     {
+      // Iterate through sidebar sections
       Object.entries(sidebar).map(([header, children]) => (
         <li class="mt-8 first:pt-[var(--doc-padding)] last:pb-8 last:mb-[var(--theme-navbar-height)]">
           <div class="nav-group">
+            <!-- Section header -->
             <h2 class="text-lg font-bold uppercase mb-2">{header}</h2>
             <ul>
+              {/* Iterate through section children */}
               {children.map((child) => {
+                // Construct the full URL for the child link
                 const url = Astro.site?.pathname + child.link
                 return (
                   <li class="nav-link">
                     <a
                       href={url}
+                      // Set aria-current attribute for the current page
                       aria-current={
                         currentPageMatch === child.link ? 'page' : false
                       }
@@ -46,6 +61,7 @@ const sidebar = SIDEBAR[langCode]
   </ul>
 </nav>
 
+<!-- Client-side script to scroll to the current page link -->
 <script is:inline>
   window.addEventListener('DOMContentLoaded', () => {
     var target = document.querySelector('[aria-current="page"]')
@@ -55,6 +71,7 @@ const sidebar = SIDEBAR[langCode]
   })
 </script>
 
+<!-- Global styles for dark theme -->
 <style is:global>
   :root.theme-dark .nav-link a[aria-current='page'] {
     color: hsla(var(--color-base-white), 100%, 1);
