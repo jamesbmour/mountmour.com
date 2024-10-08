@@ -4,7 +4,9 @@
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "jsxImportSource": "react",
+//    "jsxImportSource": "react",
+    "jsxImportSource": "preact",
+
     "baseUrl": ".",
     "paths": {
       "@/*": [
