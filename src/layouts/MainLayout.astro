@@ -21,41 +21,30 @@ const currentFile = `src/content/docs${currentPage.replace(/\/$/, '')}.mdx`
 const editUrl = `${EDIT_URL}/${currentFile}`
 ---
 
-<!DOCTYPE html>
-<html dir={data.dir} lang={data.lang}>
+<html dir={data.dir} lang={data.lang} class="initial">
   <head>
     <HeadCommon />
     <HeadSEO {...data} canonicalUrl={canonicalURL} />
-    <title>{`${data.title} 🚀 ${SITE.title}`}</title>
+    <title>
+      {`${data.title} 🚀 ${SITE.title}`}
+    </title>
   </head>
 
-  <body class="w-full grid grid-rows-[var(--theme-navbar-height)_1fr]">
-    <!-- Header -->
+  <body class="  w-full grid grid-rows-[var(--theme-navbar-height)_1fr]">
     <Header currentPage={currentPage} />
-
-    <!-- Main Content Area -->
     <main class="grid grid-cols-[minmax(var(--gutter),1fr)_minmax(0,var(--max-width))_minmax(var(--gutter),1fr)] overflow-x-hidden md:grid-cols-[20rem_minmax(0,var(--max-width))] md:gap-4 lg:grid-cols-[20rem_minmax(0,var(--max-width))_18rem] lg:px-0 lg:mx-auto">
-      
-      <!-- Left Sidebar -->
-      <aside id="grid-left" class="hidden md:flex md:sticky md:top-0 bg-gray-800 z-10 pl-8" title="Site Navigation">
+      <aside id="grid-left" class="grid-sidebar fixed bg-[var(--theme-bg)] z-10 hidden md:flex md:sticky md:pl-8" title="Site Navigation">
         <LeftSidebar currentPage={currentPage} />
       </aside>
-      
-      <!-- Main Content -->
-      <div id="grid-main" class="p-4 md:p-6 flex flex-col h-full">
+      <div id="grid-main" class="p-[var(--doc-padding)_var(--gutter)] col-span-2 md:col-span-1 flex flex-col h-full">
         <PageContent title={data.title} headings={headings} editUrl={editUrl}>
           <slot />
         </PageContent>
       </div>
-      
-      <!-- Right Sidebar -->
-      <aside id="grid-right" class="hidden lg:flex lg:col-span-1" title="Table of Contents">
+      <aside id="grid-right" class="grid-sidebar hidden lg:flex lg:col-span-1" title="Table of Contents">
         <RightSidebar headings={headings} editUrl={editUrl} />
       </aside>
-      
     </main>
-
-    <!-- Footer -->
     <Footer path={currentFile} />
   </body>
 </html>
