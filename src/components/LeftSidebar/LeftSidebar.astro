@@ -1,57 +1,47 @@
 ---
-import { getLanguageFromURL } from '../../languages'
-import { SIDEBAR } from '../../consts'
+import { getLanguageFromURL } from "../../languages";
+import { SIDEBAR } from "../../consts";
 
-// Define the props type for the component
 type Props = {
-  currentPage: string
-}
+  currentPage: string;
+};
 
-// Destructure the currentPage prop from Astro.props
-const { currentPage } = Astro.props
+const { currentPage } = Astro.props;
 
-// Process the currentPage string to match the sidebar links
-const currentPageMatch = currentPage.endsWith('/')
+const currentPageMatch = currentPage.endsWith("/")
   ? currentPage.slice(1, -1)
-  : currentPage.slice(1)
+  : currentPage.slice(1);
 
-// Get the language code from the current URL
-const langCode = getLanguageFromURL(currentPage)
+const langCode = getLanguageFromURL(currentPage);
 
-// Get the sidebar structure for the current language
-const sidebar = SIDEBAR[langCode]
+const sidebar = SIDEBAR[langCode];
 ---
 
-<!-- Navigation component -->
 <nav aria-labelledby="grid-left" class="w-full mr-4">
-  <!-- Sidebar navigation list -->
-  <ul class="nav-groups h-full py-8 overflow-x-visible overflow-y-auto max-h-screen">
+  <ul
+    class="nav-groups h-full py-8 overflow-x-visible overflow-y-auto max-h-screen"
+  >
     {
-      // Iterate through sidebar sections
       Object.entries(sidebar).map(([header, children]) => (
         <li class="mt-8 first:pt-[var(--doc-padding)] last:pb-8 last:mb-[var(--theme-navbar-height)]">
           <div class="nav-group">
-            <!-- Section header -->
             <h2 class="text-lg font-bold uppercase mb-2">{header}</h2>
             <ul>
-              {/* Iterate through section children */}
               {children.map((child) => {
-                // Construct the full URL for the child link
-                const url = Astro.site?.pathname + child.link
+                const url = Astro.site?.pathname + child.link;
                 return (
                   <li class="nav-link">
                     <a
                       href={url}
-                      // Set aria-current attribute for the current page
                       aria-current={
-                        currentPageMatch === child.link ? 'page' : false
+                        currentPageMatch === child.link ? "page" : false
                       }
                       class="text-base m-0.5 py-1 px-4 no-underline block hover:bg-[var(--theme-bg-hover)] focus:bg-[var(--theme-bg-hover)]"
                     >
                       {child.text}
                     </a>
                   </li>
-                )
+                );
               })}
             </ul>
           </div>
@@ -61,19 +51,17 @@ const sidebar = SIDEBAR[langCode]
   </ul>
 </nav>
 
-<!-- Client-side script to scroll to the current page link -->
 <script is:inline>
-  window.addEventListener('DOMContentLoaded', () => {
-    var target = document.querySelector('[aria-current="page"]')
+  window.addEventListener("DOMContentLoaded", () => {
+    var target = document.querySelector('[aria-current="page"]');
     if (target && target.offsetTop > window.innerHeight - 100) {
-      document.querySelector('.nav-groups').scrollTop = target.offsetTop
+      document.querySelector(".nav-groups").scrollTop = target.offsetTop;
     }
-  })
+  });
 </script>
 
-<!-- Global styles for dark theme -->
 <style is:global>
-  :root.theme-dark .nav-link a[aria-current='page'] {
+  :root.theme-dark .nav-link a[aria-current="page"] {
     color: hsla(var(--color-base-white), 100%, 1);
   }
 </style>

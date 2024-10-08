@@ -1,40 +1,89 @@
 ---
-import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from '../../languages'
-import { SITE } from '../../consts'
-import AstroLogo from './AstroLogo.astro'
-import SkipToContent from './SkipToContent.astro'
-import SidebarToggle from './SidebarToggle'
-import LanguageSelect from './LanguageSelect'
-import Search from './Search'
+import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from "../../languages";
+import { SITE } from "../../consts";
+import AstroLogo from "./AstroLogo.astro";
+import SkipToContent from "./SkipToContent.astro";
+import SidebarToggle from "./SidebarToggle";
+import LanguageSelect from "./LanguageSelect";
+import Search from "./Search";
+import LeftSidebar from "../LeftSidebar/LeftSidebar.astro";
 
 type Props = {
-  currentPage: string
-}
+  currentPage: string;
+};
 
-const { currentPage } = Astro.props
-const lang = getLanguageFromURL(currentPage)
+const { currentPage } = Astro.props;
+const lang = getLanguageFromURL(currentPage);
 ---
-<!-- class="bg-gray-900" aria-labelledby="footer-heading" -->
-<header class="bg-gray-900 z-11 h-[var(--theme-navbar-height)] w-full bg-[var(--theme-navbar-bg)] flex items-center justify-center overflow-hidden sticky top-0 md:static md:py-8">
+
+<header
+  class="bg-gray-900 z-11 h-[var(--theme-navbar-height)] w-full bg-[var(--theme-navbar-bg)] flex items-center justify-center overflow-hidden sticky top-0 md:static md:py-8"
+>
   <SkipToContent />
-  <nav class="flex items-center justify-end gap-4 w-full max-w-7xl px-4" title="Top Navigation">
+  <nav
+    class="flex items-center justify-end gap-4 w-full max-w-7xl px-4"
+    title="Top Navigation"
+  >
     <div class="md:hidden">
       <SidebarToggle client:idle />
     </div>
-    <div class="logo flex flex-1 overflow-hidden w-8 text-2xl flex-shrink-0 font-semibold leading-none text-white gap-1 z-[-1] md:w-auto md:my-0 md:z-0">
-      <a href="/" class="flex p-2 -m-2 no-underline font-bold transition-colors duration-100 ease-out text-[var(--theme-text)] hover:text-[var(--theme-text-accent)] focus:text-[var(--theme-text-accent)]">
+    <div
+      class="logo flex flex-1 overflow-hidden w-8 text-2xl flex-shrink-0 font-semibold leading-none text-white gap-1 z-[-1] md:w-auto md:my-0 md:z-0"
+    >
+      <a
+        href="/"
+        class="flex p-2 -m-2 no-underline font-bold transition-colors duration-100 ease-out text-[var(--theme-text)] hover:text-[var(--theme-text-accent)] focus:text-[var(--theme-text-accent)]"
+      >
         <AstroLogo size={160} />
-        <!-- <h1 class="hidden md:block"> {SITE.title ?? 'Documentation'} </h1> -->
       </a>
     </div>
-    <!-- <div class="flex-grow"></div> -->
-    <div class="relative z-10 flex flex-grow pr-2 max-w-[200px] md:max-w-[400px]">
+    <div
+      class="relative z-10 flex flex-grow pr-2 max-w-[200px] md:max-w-[400px]"
+    >
       <Search client:idle />
     </div>
-    <!-- {
-      KNOWN_LANGUAGE_CODES.length > 1 && (
-        <LanguageSelect lang={lang} client:idle />
-      )
-    } -->
   </nav>
 </header>
+
+<!-- Add the LeftSidebar component here, initially hidden on mobile -->
+<div
+  id="mobile-sidebar"
+  class="md:hidden fixed inset-y-0 left-0 transform -translate-x-full transition duration-200 ease-in-out z-30 bg-gray-900 w-64"
+>
+  <LeftSidebar currentPage={currentPage} />
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenu = document.getElementById(
+      "mobile-sidebar"
+    ) as HTMLElement | null;
+    const menuToggle = document.getElementById(
+      "menu-toggle"
+    ) as HTMLElement | null;
+
+    if (mobileMenu && menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("-translate-x-full");
+      });
+    } else {
+      console.warn("Mobile menu or toggle button not found");
+    }
+  });
+</script>
+
+<style>
+  @media (max-width: 768px) {
+    body.mobile-sidebar-toggle {
+      overflow: hidden;
+    }
+
+    #mobile-sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #mobile-sidebar.active {
+      transform: translateX(0);
+    }
+  }
+</style>

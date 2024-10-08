@@ -6,18 +6,22 @@ const MenuToggle: FunctionalComponent = () => {
   const [sidebarShown, setSidebarShown] = useState(false)
 
   useEffect(() => {
-    const body = document.querySelector('body')!
+    const body = document.querySelector('body')!;
+    const mobileMenu = document.getElementById('mobile-sidebar');
+  
     if (sidebarShown) {
-      body.classList.add('mobile-sidebar-toggle')
+      body.classList.add('mobile-sidebar-toggle');
+      mobileMenu?.classList.remove('-translate-x-full');
     } else {
-      body.classList.remove('mobile-sidebar-toggle')
+      body.classList.remove('mobile-sidebar-toggle');
+      mobileMenu?.classList.add('-translate-x-full');
     }
-  }, [sidebarShown])
+  }, [sidebarShown]);
 
   return (
     <button
       type="button"
-      aria-pressed={sidebarShown.toString()}
+      aria-pressed={sidebarShown ? "true" : "false"}
       id="menu-toggle"
       onClick={() => setSidebarShown(!sidebarShown)}
     >
