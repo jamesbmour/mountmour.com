@@ -3,63 +3,8 @@ title: 'Maps'
 description: 'Useful maps for the area'
 ---
 
-<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-  {/* <p className="text-lg mb-8">
-  Here are some useful maps for the area. 
-  </p> */}
+import MapLocations from '../../../components/PageContent/MapLocations.astro';
 
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <div className="space-y-6">
-      <h3 className="text-2xl font-bold">Main Address</h3>
-      <a href="https://maps.app.goo.gl/XL7GGSyDVDmvzm7N8" className="text-cyan-600 hover:underline">
-        747 S Galena St Unit 450, Aspen, CO 81611
-      </a>
-      <div className="aspect-w-16 aspect-h-9">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3092.5220427255226!2d-106.82297432255818!3d39.185585129645986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874039624954bd75%3A0x2545c9b438cf45bb!2s747%20S%20Galena%20St%20%23450%2C%20Aspen%2C%20CO%2081611!5e0!3m2!1sen!2sus!4v1727241559947!5m2!1sen!2sus" 
-          className="w-full h-full"
-          style={{border:0}} 
-          allowFullScreen="" 
-          loading="lazy" 
-          referrerPolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
 
-    <div className="space-y-8">
-      <div className="space-y-6">
-        <h3 className="text-2xl font-bold">City Market</h3>
-        <a href="https://maps.app.goo.gl/hWniv5gfDyCHPvEs5" className="text-cyan-600 hover:underline">
-          711 E Cooper Ave, Aspen, CO 81611
-        </a>
-        <div className="aspect-w-16 aspect-h-9">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3092.4515283484648!2d-106.81838392404926!3d39.18718777166363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87403bd84ff6cf43%3A0x4ec99374e318c58b!2sCity%20Market!5e0!3m2!1sen!2sus!4v1727241758086!5m2!1sen!2sus" 
-            className="w-full h-full"
-            style={{border:0}} 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
 
-      <div className="space-y-6">
-        <h3 className="text-2xl font-bold">Liquor Store</h3>
-        <a href="https://maps.app.goo.gl/cVWfmSAGG4exrtXC6" className="text-cyan-600 hover:underline">
-          710 E Durant Ave, Aspen, CO 81611
-        </a>
-        <div className="aspect-w-16 aspect-h-9">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d518.980042074563!2d-106.81579702841503!3d39.18718777310626!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87403bd8f3876cb3%3A0x7515eb3621043a87!2sAspen%20Grog%20Shop%20-%20Order%20Online*21!5e0!3m2!1sen!2sus!4v1727241952345!5m2!1sen!2sus" 
-            className="w-full h-full"
-            style={{border:0}} 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<MapLocations />
