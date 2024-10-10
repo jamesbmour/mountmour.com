@@ -51,8 +51,7 @@ export const SIDEBAR: Sidebar = {
       { text: 'Contact', link: 'en/contact' }
     ],
     'Kitchen & Living Room': [
-      { text: 'TV Remove', link: 'en/tv-remove' },
-      
+      { text: 'TV Remote', link: 'en/tv-remote' },
       
       { text: 'Air Conditioner', link: 'en/air-conditioner' },
       { text: 'Heating', link: 'en/heating' },

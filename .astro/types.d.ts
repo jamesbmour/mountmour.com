@@ -327,9 +327,9 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/tv-remove.mdx": {
-	id: "en/tv-remove.mdx";
-  slug: "en/tv-remove";
+"en/tv-remote.mdx": {
+	id: "en/tv-remote.mdx";
+  slug: "en/tv-remote";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
