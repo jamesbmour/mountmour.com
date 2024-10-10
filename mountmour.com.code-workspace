@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "../bmours"
+		},
+		{
+			"path": "../tailwindui-protocol"
+		},
+		{
+			"path": "../Astro-Templates"
 		}
 	],
 	"settings": {

@@ -19,13 +19,13 @@ const sidebar = SIDEBAR[langCode];
 
 <nav aria-labelledby="grid-left" class="w-full mr-4">
   <ul
-    class="nav-groups h-full py-8 overflow-x-visible overflow-y-auto max-h-screen"
+    class="h-full max-h-screen py-8 overflow-x-visible overflow-y-auto nav-groups"
   >
     {
       Object.entries(sidebar).map(([header, children]) => (
         <li class="mt-8 first:pt-[var(--doc-padding)] last:pb-8 last:mb-[var(--theme-navbar-height)]">
           <div class="nav-group">
-            <h2 class="text-lg font-bold uppercase mb-2">{header}</h2>
+            <h2 class="mb-2 text-lg font-bold uppercase">{header}</h2>
             <ul>
               {children.map((child) => {
                 const url = Astro.site?.pathname + child.link;

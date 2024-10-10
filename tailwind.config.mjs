@@ -12,6 +12,8 @@ export default {
 		colors: {
 		  background: 'hsl(var(--background))',
 		  foreground: 'hsl(var(--foreground))',
+		  primary: '#1D4ED8',
+		  secondary: '#9333EA',
 		  card: {
 			DEFAULT: 'hsl(var(--card))',
 			foreground: 'hsl(var(--card-foreground))'
@@ -56,6 +58,8 @@ export default {
 	plugins: [require("tailwindcss-animate")],
 	corePlugins: {
 	  preflight: false,
-	}
+	},
+	purge: ['./src/**/*.{astro,js,jsx,ts,tsx,vue,html}'],
+
   }
   
