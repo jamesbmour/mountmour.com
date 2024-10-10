@@ -43,24 +43,27 @@ export const SIDEBAR: Sidebar = {
       { text: 'Home', link: 'en/introduction' },
       { text: 'Quick Guide', link: 'en/quick-guide' },
       { text: 'Maps', link: 'en/maps' },
-      { text: 'Town Guide', link: 'en/town-guide' },
-      { text: 'Winter Activities', link: 'en/winter-activities' },
-      { text: 'Summer Activities', link: 'en/summer-activities' }
+      // { text: 'Town Guide', link: 'en/town-guide' },
+      // { text: 'Winter Activities', link: 'en/winter-activities' },
+      // { text: 'Summer Activities', link: 'en/summer-activities' },
+      { text: 'WiFi', link: 'en/wifi' },
+      { text: 'Sonos', link: 'en/sonos' },
+      { text: 'Contact', link: 'en/contact' }
     ],
     'Kitchen & Living Room': [
       { text: 'TV Remove', link: 'en/tv-remove' },
-      { text: 'Channel Guide', link: 'en/channel-guide' },
-      { text: 'Remote Control', link: 'en/remote-control' },
+      
+      
       { text: 'Air Conditioner', link: 'en/air-conditioner' },
       { text: 'Heating', link: 'en/heating' },
-      { text: 'WiFi', link: 'en/wifi' },
-      { text: 'Sonos', link: 'en/sonos' },
+      
+      
       { text: 'Dishwasher', link: 'en/dishwasher' },
       { text: 'Stove', link: 'en/stove' }
     ],
-    'Bedroom & Bathroom': [
-      { text: 'Bedroom', link: 'en/bedroom' },
-      { text: 'Bathroom', link: 'en/bathroom' }
+    'Living Room': [
+      { text: 'Channel Guide', link: 'en/channel-guide' },
+      { text: 'Remote Control', link: 'en/remote-control' },
     ]
   }
 }
