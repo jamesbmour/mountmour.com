@@ -264,6 +264,27 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"en/guides/summer-activities.mdx": {
+	id: "en/guides/summer-activities.mdx";
+  slug: "en/guides/summer-activities";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/guides/town-guide.mdx": {
+	id: "en/guides/town-guide.mdx";
+  slug: "en/guides/town-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/guides/winter-activities.mdx": {
+	id: "en/guides/winter-activities.mdx";
+  slug: "en/guides/winter-activities";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "en/heating.mdx": {
 	id: "en/heating.mdx";
   slug: "en/heating";
@@ -313,20 +334,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/summer-activities.mdx": {
-	id: "en/summer-activities.mdx";
-  slug: "en/summer-activities";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/town-guide.mdx": {
-	id: "en/town-guide.mdx";
-  slug: "en/town-guide";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
 "en/tv-remote.mdx": {
 	id: "en/tv-remote.mdx";
   slug: "en/tv-remote";
@@ -337,13 +344,6 @@ declare module 'astro:content' {
 "en/wifi.mdx": {
 	id: "en/wifi.mdx";
   slug: "en/wifi";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/winter-activities.mdx": {
-	id: "en/winter-activities.mdx";
-  slug: "en/winter-activities";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">

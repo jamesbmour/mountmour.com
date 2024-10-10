@@ -21,25 +21,32 @@ const locations = [
 ];
 ---
 <!-- MapLocations.astro -->
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    {locations.map((location, index) => (
-      <div class="space-y-6">
-        <h2 class="text-2xl font-bold" id={location.title.toLowerCase().replace(/\s+/g, '-')}>
-          {location.title}
-        </h2>
-        <a href={location.mapUrl} class="text-cyan-600 hover:underline">
-          {location.address}
-        </a>
-        <div class="aspect-w-16 aspect-h-9">
-          <iframe
-            src={location.embedUrl}
-            class="w-full h-full"
-            style="border:0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+<div class="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+    {locations.map((location) => (
+      <div class="overflow-hidden divide-y divide-gray-200 rounded-lg shadow bg-slate-700">
+        <div class="px-2 py-3 sm:px-6">
+          <h2 class="text-xl font-semibold text-slate-100" id={location.title.toLowerCase().replace(/\s+/g, '-')}>
+            {location.title}
+          </h2>
+        </div>
+        <div class="px-2 py-3 sm:p-6">
+          <div class="aspect-w-16 aspect-h-9">
+            <iframe
+              src={location.embedUrl}
+              class="w-full h-full rounded-md"
+              style="border:0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+        <div class="px-2 py-3 sm:px-6">
+          <a href={location.mapUrl} class="text-sm font-medium hover:text-cyan-500">
+            {location.address}
+            <span aria-hidden="true"> &rarr;</span>
+          </a>
         </div>
       </div>
     ))}
