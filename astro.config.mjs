@@ -11,7 +11,7 @@ import markdoc from "@astrojs/markdoc";
 export default defineConfig({
   integrations: [mdx(), preact(), react(), sitemap(), tailwind(), tailwind({
     applyBaseStyles: false
-  }), markdoc()],
+  }), markdoc(),sitemap()],
   base: `/`,
   site: `https://mountmour.com`
 });
