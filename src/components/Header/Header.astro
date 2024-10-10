@@ -19,11 +19,11 @@ const { currentPage } = Astro.props;
 >
   <SkipToContent />
   <nav
-    class="flex items-center justify-between w-full max-w-7xl px-2 md:px-4"
+    class="flex items-center justify-between w-full px-2 max-w-7xl md:px-4"
     title="Top Navigation"
   >
     <div class="flex items-center">
-      <div class="md:hidden mr-2">
+      <div class="mr-2 md:hidden">
         <SidebarToggle client:idle />
       </div>
       <div
@@ -47,7 +47,7 @@ const { currentPage } = Astro.props;
 <!-- Mobile sidebar -->
 <div
   id="mobile-sidebar"
-  class="fixed inset-y-0 left-0 w-64 bg-gray-900 -translate-x-full transform transition-transform duration-200 ease-in-out z-30 md:hidden"
+  class="fixed inset-y-0 left-0 z-30 w-64 transition-transform duration-200 ease-in-out transform -translate-x-full bg-gray-900 md:hidden"
 >
   <LeftSidebar currentPage={currentPage} />
 </div>

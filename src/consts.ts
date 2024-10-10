@@ -41,9 +41,10 @@ export const SIDEBAR: Sidebar = {
   en: {
     'Guide Books': [
       { text: 'Home', link: 'en/introduction' },
-      { text: 'Quick Guide', link: 'en/quick-guide' },
+      { text: 'Welcome Letter', link: 'en/guides/welcome' },
+      { text: 'Quick Guide', link: 'en/guides/quick-guide' },
       { text: 'Maps', link: 'en/maps' },
-      // { text: 'Town Guide', link: 'en/town-guide' },
+      { text: 'Town Guide', link: 'en/guides/town-guide' },
       // { text: 'Winter Activities', link: 'en/winter-activities' },
       // { text: 'Summer Activities', link: 'en/summer-activities' },
       { text: 'WiFi', link: 'en/wifi' },

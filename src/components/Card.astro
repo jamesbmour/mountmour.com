@@ -1,0 +1,42 @@
+---
+// Card.astro
+type Props = {
+  title: string;
+  link: string;
+  description: string;
+};
+
+const { title, link, description } = Astro.props;
+---
+
+<div class="card">
+  <a href={link} class="card-link">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-description">{description}</p>
+  </a>
+</div>
+
+<style>
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+.card-description {
+  margin: 8px 0 0;
+  color: #666;
+}
+</style>

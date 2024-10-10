@@ -229,6 +229,27 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"en/archive/summer-activities.mdx": {
+	id: "en/archive/summer-activities.mdx";
+  slug: "en/archive/summer-activities";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/archive/town-guide.mdx": {
+	id: "en/archive/town-guide.mdx";
+  slug: "en/archive/town-guide";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/archive/winter-activities.mdx": {
+	id: "en/archive/winter-activities.mdx";
+  slug: "en/archive/winter-activities";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "en/bathroom.mdx": {
 	id: "en/bathroom.mdx";
   slug: "en/bathroom";
@@ -264,23 +285,16 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/guides/summer-activities.mdx": {
-	id: "en/guides/summer-activities.mdx";
-  slug: "en/guides/summer-activities";
+"en/guides/quick-guide.mdx": {
+	id: "en/guides/quick-guide.mdx";
+  slug: "en/guides/quick-guide";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/guides/town-guide.mdx": {
-	id: "en/guides/town-guide.mdx";
-  slug: "en/guides/town-guide";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/guides/winter-activities.mdx": {
-	id: "en/guides/winter-activities.mdx";
-  slug: "en/guides/winter-activities";
+"en/guides/welcome.mdx": {
+	id: "en/guides/welcome.mdx";
+  slug: "en/guides/welcome";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -302,13 +316,6 @@ declare module 'astro:content' {
 "en/maps.mdx": {
 	id: "en/maps.mdx";
   slug: "en/maps";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/quick-guide.mdx": {
-	id: "en/quick-guide.mdx";
-  slug: "en/quick-guide";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
