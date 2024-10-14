@@ -64,6 +64,7 @@ export const SIDEBAR: Sidebar = {
     'Other': [
       { text: 'Air Conditioner', link: 'en/other/air-conditioner' },
       { text: 'Heating', link: 'en/other/heating' },   
+      { text: 'Ski Maps', link: 'en/other/ski-maps' },  
      ]
 
   }

@@ -460,6 +460,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"en/other/ski-maps.mdx": {
+	id: "en/other/ski-maps.mdx";
+  slug: "en/other/ski-maps";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 };
 
 	};
