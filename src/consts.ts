@@ -35,35 +35,36 @@ export type Sidebar = Record<
 export const SIDEBAR: Sidebar = {
   de: {
     Überschrift: [
-      { text: 'Quick Guide', link: 'en/introduction' }
+      { text: 'Quick Guide', link: 'en/home' }
     ],
   },
   en: {
     'Guide Books': [
-      { text: 'Home', link: 'en/introduction' },
+      { text: 'Home', link: 'en/home' },
       { text: 'Welcome Letter', link: 'en/guides/welcome' },
       { text: 'Quick Guide', link: 'en/guides/quick-guide' },
-      { text: 'Maps', link: 'en/maps' },
+      { text: 'Maps', link: 'en/guides/maps' },
       // { text: 'Town Guide', link: 'en/guides/town-guide' },
       // { text: 'Winter Activities', link: 'en/winter-activities' },
       // { text: 'Summer Activities', link: 'en/summer-activities' },
-      { text: 'WiFi', link: 'en/wifi' },
-      { text: 'Sonos', link: 'en/sonos' },
+   
       { text: 'Contact', link: 'en/contact' }
     ],
-    'Kitchen & Living Room': [
-      { text: 'TV Remote', link: 'en/tv-remote' },
-      
-      { text: 'Air Conditioner', link: 'en/air-conditioner' },
-      { text: 'Heating', link: 'en/heating' },
-      
-      
-      { text: 'Dishwasher', link: 'en/dishwasher' },
-      { text: 'Stove', link: 'en/stove' }
+    'Kitchen': [
+      { text: 'Dishwasher', link: 'en/kitchen/dishwasher' },
+      { text: 'Stove', link: 'en/kitchen/stove' }
     ],
     'Living Room': [
-      { text: 'Channel Guide', link: 'en/channel-guide' },
-      { text: 'Remote Control', link: 'en/remote-control' },
-    ]
+      { text: 'WiFi', link: 'en/living-room/wifi' },
+      { text: 'Sonos', link: 'en/living-room/sonos' },
+      { text: 'TV Remote', link: 'en/living-room/tv-remote' },
+      { text: 'Channel Guide', link: 'en/living-room/channel-guide' },
+      { text: 'Remote Control', link: 'en/living-room/remote-control' },
+    ],
+    'Other': [
+      { text: 'Air Conditioner', link: 'en/other/air-conditioner' },
+      { text: 'Heating', link: 'en/other/heating' },   
+     ]
+
   }
 }

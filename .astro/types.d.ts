@@ -222,9 +222,16 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/air-conditioner.mdx": {
-	id: "en/air-conditioner.mdx";
-  slug: "en/air-conditioner";
+"en/archive/bathroom.mdx": {
+	id: "en/archive/bathroom.mdx";
+  slug: "en/archive/bathroom";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/archive/bedroom.mdx": {
+	id: "en/archive/bedroom.mdx";
+  slug: "en/archive/bedroom";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -250,27 +257,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/bathroom.mdx": {
-	id: "en/bathroom.mdx";
-  slug: "en/bathroom";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/bedroom.mdx": {
-	id: "en/bedroom.mdx";
-  slug: "en/bedroom";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"en/channel-guide.mdx": {
-	id: "en/channel-guide.mdx";
-  slug: "en/channel-guide";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
 "en/contact.mdx": {
 	id: "en/contact.mdx";
   slug: "en/contact";
@@ -278,9 +264,9 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/dishwasher.mdx": {
-	id: "en/dishwasher.mdx";
-  slug: "en/dishwasher";
+"en/guides/maps.mdx": {
+	id: "en/guides/maps.mdx";
+  slug: "en/guides/maps";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -299,58 +285,72 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/heating.mdx": {
-	id: "en/heating.mdx";
-  slug: "en/heating";
+"en/home.mdx": {
+	id: "en/home.mdx";
+  slug: "en/home";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/introduction.mdx": {
-	id: "en/introduction.mdx";
-  slug: "en/introduction";
+"en/kitchen/dishwasher.mdx": {
+	id: "en/kitchen/dishwasher.mdx";
+  slug: "en/kitchen/dishwasher";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/maps.mdx": {
-	id: "en/maps.mdx";
-  slug: "en/maps";
+"en/kitchen/stove.mdx": {
+	id: "en/kitchen/stove.mdx";
+  slug: "en/kitchen/stove";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/remote-control.mdx": {
-	id: "en/remote-control.mdx";
-  slug: "en/remote-control";
+"en/living-room/channel-guide.mdx": {
+	id: "en/living-room/channel-guide.mdx";
+  slug: "en/living-room/channel-guide";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/sonos.mdx": {
-	id: "en/sonos.mdx";
-  slug: "en/sonos";
+"en/living-room/remote-control.mdx": {
+	id: "en/living-room/remote-control.mdx";
+  slug: "en/living-room/remote-control";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/stove.mdx": {
-	id: "en/stove.mdx";
-  slug: "en/stove";
+"en/living-room/sonos.mdx": {
+	id: "en/living-room/sonos.mdx";
+  slug: "en/living-room/sonos";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/tv-remote.mdx": {
-	id: "en/tv-remote.mdx";
-  slug: "en/tv-remote";
+"en/living-room/tv-remote.mdx": {
+	id: "en/living-room/tv-remote.mdx";
+  slug: "en/living-room/tv-remote";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"en/wifi.mdx": {
-	id: "en/wifi.mdx";
-  slug: "en/wifi";
+"en/living-room/wifi.mdx": {
+	id: "en/living-room/wifi.mdx";
+  slug: "en/living-room/wifi";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/other/air-conditioner.mdx": {
+	id: "en/other/air-conditioner.mdx";
+  slug: "en/other/air-conditioner";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"en/other/heating.mdx": {
+	id: "en/other/heating.mdx";
+  slug: "en/other/heating";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
