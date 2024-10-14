@@ -1,0 +1,19 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//BusyMac LLC//BusyContacts 1.4.2//EN
+FN:Bmours
+N:Brendamour;James;;;
+ORG:Bmours
+TITLE:Manager
+EMAIL;TYPE=work;PREF=1:bmour.management@outlook.com
+TEL;TYPE=work:+1 (720) 432-8653
+TEL;TYPE=work:+1 513-543-8687
+item1.ADR;PREF=1:;;747 S Galena St;Aspen;CO;81611;USA
+item1.X-ABLabel:Aspen
+KIND:org
+NOTE:8/6/18\, 4:44 PM:
+REV:20191027T190621Z
+UID:C5D84BFE-24C9-45AB-B3A2-DD0ACB34A7B0
+URL;TYPE=work;PREF=1:www.bmours.com
+X-BUSYMAC-MODIFIED-BY:James Brendamour
+END:VCARD
