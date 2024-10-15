@@ -28,6 +28,7 @@ const editUrl = `${EDIT_URL}/${currentFile}`
     <title>
       {`${data.title} 🚀 ${SITE.title}`}
     </title>
+    <meta name="algolia-site-verification"  content="4D2C919F923425A0" />
   </head>
 
   <body class="  w-full grid grid-rows-[var(--theme-navbar-height)_1fr]">
@@ -41,7 +42,7 @@ const editUrl = `${EDIT_URL}/${currentFile}`
           <slot />
         </PageContent>
       </div>
-      <aside id="grid-right" class="grid-sidebar hidden lg:flex lg:col-span-1" title="Table of Contents">
+      <aside id="grid-right" class="hidden grid-sidebar lg:flex lg:col-span-1" title="Table of Contents">
         <RightSidebar headings={headings} editUrl={editUrl} />
       </aside>
     </main>
