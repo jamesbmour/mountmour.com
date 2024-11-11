@@ -10,6 +10,7 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "start": "astro dev",
+    "build-search-index": "node src/scripts/build-search-index.js",
     "prettier:check": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --cache --write --plugin-search-dir=. .",
     "lint:scss": "stylelint \"src/**/*.{astro,scss}\""
@@ -40,6 +41,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
+    "glob": "^11.0.0",
     "lucide-react": "^0.445.0",
     "lunr": "^2.3.9",
     "preact": "^10.19.2",
