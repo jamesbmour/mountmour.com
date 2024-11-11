@@ -59,7 +59,7 @@ export const SIDEBAR: Sidebar = {
       { text: 'Sonos', link: 'en/living-room/sonos' },
       { text: 'TV Remote', link: 'en/living-room/tv-remote' },
       { text: 'Channel Guide', link: 'en/living-room/channel-guide' },
-      { text: 'Remote Control', link: 'en/living-room/remote-control' },
+      // { text: 'Remote Control', link: 'en/living-room/remote-control' },
     ],
     'Other': [
       { text: 'Air Conditioner', link: 'en/other/air-conditioner' },
