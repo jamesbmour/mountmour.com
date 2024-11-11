@@ -24,7 +24,7 @@ export const EDIT_URL = `https://github.com/`
 export const COMMUNITY_INVITE_URL = `https://astro.build/chat`
 
 export const ALGOLIA = {
-  indexName: 'XXXXXXXXXX', appId: '37J3RB86OE', apiKey: 'f079bd3edcd05fff46132f406ec56749'
+  indexName: 'mountmour_pages', appId: '37J3RB86OE', apiKey: 'f079bd3edcd05fff46132f406ec56749'
 }
 
 export type Sidebar = Record<
