@@ -14,7 +14,10 @@
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "bmours"
+		"liveServer.settings.multiRootWorkspaceName": "bmours",
+		"scm.alwaysShowRepositories": true,
+		"scm.alwaysShowActions": true,
+		"scm.compactFolders": true
 	},
 	"launch": {
 		"configurations": [
