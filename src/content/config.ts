@@ -1,7 +1,5 @@
 import { defineCollection, z } from 'astro:content'
 import { SITE } from '../consts'
-import { docSearchI18nSchema } from '@astrojs/starlight-docsearch/schema';
-import { docsSchema, i18nSchema } from '@astrojs/starlight/schema';
 
 const docs = defineCollection({
   schema: z.object({
@@ -16,11 +14,7 @@ const docs = defineCollection({
       })
       .optional(),
     ogLocale: z.string().optional()
-  }
-  
-),
-
-
+  })
 })
 
 export const collections = { docs }
