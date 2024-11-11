@@ -377,6 +377,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"en/kitchen/washing-machine.mdx": {
+	id: "en/kitchen/washing-machine.mdx";
+  slug: "en/kitchen/washing-machine";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "en/living-room/channel-guide.mdx": {
 	id: "en/living-room/channel-guide.mdx";
   slug: "en/living-room/channel-guide";

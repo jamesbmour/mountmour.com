@@ -52,7 +52,8 @@ export const SIDEBAR: Sidebar = {
     ],
     'Kitchen': [
       { text: 'Dishwasher', link: 'en/kitchen/dishwasher' },
-      { text: 'Stove', link: 'en/kitchen/stove' }
+      { text: 'Stove', link: 'en/kitchen/stove' },
+      { text: 'Washing Machine', link: 'en/kitchen/washing-machine' }
     ],
     'Living Room': [
       { text: 'WiFi', link: 'en/living-room/wifi' },
