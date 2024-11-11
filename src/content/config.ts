@@ -16,12 +16,10 @@ const docs = defineCollection({
       })
       .optional(),
     ogLocale: z.string().optional()
-  }),
-  docs: defineCollection({ schema: docsSchema() }),
-  i18n: defineCollection({
-    type: 'data',
-    schema: i18nSchema({ extend: docSearchI18nSchema() }),
-  }),
+  }
+  
+),
+
 
 })
 

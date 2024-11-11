@@ -1,6 +1,6 @@
 // SITE object contains metadata for the website, such as title, description, and default language.
 export const SITE = {
-  title: 'Mountmour', description: 'Your website description.', defaultLanguage: 'en-us'
+  title: 'Mountmour', description: 'Airbnb Aspen House Guide.', defaultLanguage: 'en-us'
 } as const
 
 export const OPEN_GRAPH = {
