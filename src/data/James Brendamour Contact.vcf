@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//iPhone OS 13.0//EN
+N:Brendamour;James;;;
+FN:James Brendamour
+ORG:EY;
+TITLE:Technology Consultant
+EMAIL;type=INTERNET;type=WORK;type=pref:bmour.management@outlook.com
+TEL;type=WORK;type=VOICE:7204328653
+item1.ADR;type=pref:;;747 S Galena St;Aspen;CO;81611;USA
+item1.X-ABLabel:Aspen
+URL;type=WORK;type=pref:www.bmours.com
+END:VCARD
