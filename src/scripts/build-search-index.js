@@ -1,12 +1,19 @@
 import fs from 'fs';
 import path from 'path';
 import lunr from 'lunr';
-import glob from 'glob';
+import * as glob from 'glob'; // Changed to import all exports
 import matter from 'gray-matter';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Get current file path in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const contentDir = path.join(process.cwd(), 'src/');
 const outputPath = path.join(process.cwd(), 'public', 'search-index.json');
 
+// Use glob.sync through the glob namespace
 const files = glob.sync(`${contentDir}/src`);
 
 const documents = files.map((file) => {
