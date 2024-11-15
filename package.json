@@ -42,6 +42,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
+    "flowise-embed-react": "^1.0.6",
     "fuse.js": "^7.0.0",
     "glob": "^11.0.0",
     "gray-matter": "^4.0.3",
