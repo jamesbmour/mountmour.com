@@ -1,56 +1,48 @@
-// src/components/SearchBar.jsx
-import React, { useState, useEffect } from 'react';
-import Fuse from 'fuse.js';
+import React, { useState } from 'react';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
-  const [fuse, setFuse] = useState(null);
 
-  useEffect(() => {
-    // Fetch the search index
-    fetch('/search-index.json')
-      .then((res) => res.json())
-      .then((data) => {
-        const options = {
-          keys: ['title', 'content'],
-          threshold: 0.3,
-        };
-        setFuse(new Fuse(data, options));
-      })
-      .catch((err) => console.error('Error loading search index:', err));
-  }, []);
-
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setQuery(value);
-    if (fuse && value.length > 2) {
-      const searchResults = fuse.search(value).slice(0, 5);
-      setResults(searchResults);
-    } else {
-      setResults([]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      window.location.href = `/search?q=${encodeURIComponent(query.trim())}`;
     }
   };
 
   return (
-    <div className="relative w-full">
-      <input
-        type="text"
-        value={query}
-        onChange={handleChange}
-        placeholder="Search..."
-        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-      />
-      {results.length > 0 && (
-        <ul className="absolute left-0 right-0 z-50 mt-1 overflow-y-auto bg-white border border-gray-300 rounded-md max-h-60">
-          {results.map((result, index) => (
-            <li key={index} className="px-4 py-2 hover:bg-gray-100">
-              <a href={result.item.url}>{result.item.title}</a>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <form onSubmit={handleSubmit} className="relative w-full">
+      <div className="relative">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search..."
+          className="w-full px-3 py-2 pr-10 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          aria-label="Search the site"
+        />
+        <button
+          type="submit"
+          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+          aria-label="Submit search"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </button>
+      </div>
+    </form>
   );
 };
 

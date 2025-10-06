@@ -1,0 +1,50 @@
+---
+import HeadCommon from '../components/HeadCommon.astro';
+import HeadSEO from '../components/HeadSEO.astro';
+import Header from '../components/Header/Header.astro';
+import LeftSidebar from '../components/LeftSidebar/LeftSidebar.astro';
+import { SITE } from '../consts';
+import SearchResults from '../components/SearchResults';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPage = Astro.url.pathname;
+
+const seoData = {
+  title: 'Search Results',
+  description: 'Search the Mountmour documentation',
+  lang: 'en-us',
+  dir: 'ltr',
+};
+---
+
+<html dir={seoData.dir} lang={seoData.lang} class="initial">
+  <head>
+    <HeadCommon />
+    <HeadSEO {...seoData} canonicalUrl={canonicalURL} />
+    <title>{`Search Results 🚀 ${SITE.title}`}</title>
+  </head>
+
+  <body class="w-full grid grid-rows-[var(--theme-navbar-height)_1fr]">
+    <Header currentPage={currentPage} />
+    <main class="grid grid-cols-[minmax(var(--gutter),1fr)_minmax(0,var(--max-width))_minmax(var(--gutter),1fr)] overflow-x-hidden md:grid-cols-[20rem_minmax(0,var(--max-width))] md:gap-4 lg:grid-cols-[20rem_minmax(0,var(--max-width))_18rem] lg:px-0 lg:mx-auto">
+      <aside id="grid-left" class="grid-sidebar fixed bg-[var(--theme-bg)] z-10 hidden md:flex md:sticky md:pl-8" title="Site Navigation">
+        <LeftSidebar currentPage={currentPage} />
+      </aside>
+      <div id="grid-main" class="p-[var(--doc-padding)_var(--gutter)] col-span-2 md:col-span-1 flex flex-col h-full min-h-screen">
+        <SearchResults client:only="react" />
+      </div>
+      <aside id="grid-right" class="hidden grid-sidebar lg:flex lg:col-span-1" title="Table of Contents">
+        <!-- Empty for now -->
+      </aside>
+    </main>
+    
+    <!-- Chatbot Script -->
+    <script type="module">
+      import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+      Chatbot.init({
+        chatflowid: "374cab86-2cdf-4334-9c54-c15229373d75",
+        apiHost: "https://fw.jb7.me",
+      })
+    </script>
+  </body>
+</html>
