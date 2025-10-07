@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const SearchBar = () => {
-  const [query, setQuery] = useState('');
+const SearchBar: React.FC = () => {
+  const [query, setQuery] = useState<string>('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (query.trim()) {
       window.location.href = `/search?q=${encodeURIComponent(query.trim())}`;
@@ -16,7 +16,7 @@ const SearchBar = () => {
         <input
           type="search"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
           placeholder="Search..."
           className="w-full px-3 py-2 pr-10 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
           aria-label="Search the site"
