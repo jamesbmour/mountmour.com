@@ -1,6 +1,7 @@
 /** @jsxImportSource react */
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import Fuse from 'fuse.js'
+import type { IFuseOptions, FuseResultMatch } from 'fuse.js'
 
 // ============================================================================
 // TypeScript Interfaces
@@ -17,11 +18,7 @@ interface SearchDocument {
 
 interface SearchResult extends SearchDocument {
   score?: number
-  matches?: Array<{
-    indices: number[][]
-    key: string
-    value: string
-  }>
+  matches?: readonly FuseResultMatch[]
 }
 
 interface HighlightMatch {
@@ -33,7 +30,7 @@ interface HighlightMatch {
 // Fuse.js Configuration
 // ============================================================================
 
-const FUSE_OPTIONS: Fuse.IFuseOptions<SearchDocument> = {
+const FUSE_OPTIONS: IFuseOptions<SearchDocument> = {
   keys: [
     { name: 'title', weight: 0.5 },
     { name: 'description', weight: 0.3 },
@@ -83,7 +80,9 @@ export default function Search() {
         }
 
         const data = await response.json()
-        if (!isMounted) return
+        if (!isMounted) {
+          return
+        }
 
         const docs = Array.isArray(data.documents) ? data.documents : []
         setFuseInstance(new Fuse(docs, FUSE_OPTIONS))
@@ -125,8 +124,12 @@ export default function Search() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!containerRef.current) return
-      if (containerRef.current.contains(event.target as Node)) return
+      if (!containerRef.current) {
+        return
+      }
+      if (containerRef.current.contains(event.target as Node)) {
+        return
+      }
       setIsOpen(false)
       setActiveIndex(-1)
     }
@@ -175,7 +178,7 @@ export default function Search() {
   // Highlight Matched Terms
   // ============================================================================
 
-  const highlightMatches = useCallback((text: string, matches?: Array<{ indices: number[][]; key: string; value: string }>): HighlightMatch[] => {
+  const highlightMatches = useCallback((text: string, matches?: readonly FuseResultMatch[]): HighlightMatch[] => {
     if (!matches || matches.length === 0) {
       return [{ text, highlight: false }]
     }
@@ -236,17 +239,24 @@ export default function Search() {
       return
     }
 
-    if (query.trim()) {
-      // Future: navigate to /search?q=... page
-      // For now, just select first result if available
-      if (results.length > 0) {
-        window.location.href = results[0].url
-      }
+    const trimmedQuery = query.trim()
+    if (!trimmedQuery) {
+      return
     }
+
+    // Future: navigate to /search?q=... page
+    // For now, just select first result if available
+    if (results.length === 0) {
+      return
+    }
+
+    window.location.href = results[0].url
   }, [activeIndex, results, query])
 
   const handleResultClick = useCallback((url: string) => {
-    if (!url) return
+    if (!url) {
+      return
+    }
     window.location.href = url
   }, [])
 
@@ -294,20 +304,21 @@ export default function Search() {
           }}
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          placeholder={isLoading ? 'Loading search…' : 'Search documentation…'}
-          disabled={isLoading || !!error}
+          placeholder={
+            error ? 'Search temporarily unavailable (index failed to load)' : isLoading ? 'Loading search…' : 'Search documentation…'
+          }
+          disabled={isLoading}
           className="w-full px-3 py-2 pr-10 text-sm bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Search the site"
           aria-autocomplete="list"
           aria-controls="search-results"
-          aria-expanded={isOpen && results.length > 0}
           autoComplete="off"
         />
         <button
           type="submit"
           className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors disabled:opacity-50"
           aria-label="Submit search"
-          disabled={isLoading || !!error}
+          disabled={isLoading}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -335,12 +346,13 @@ export default function Search() {
             const highlightedTitle = highlightMatches(result.title, titleMatches)
 
             return (
-              <li key={result.id} role="option" aria-selected={activeIndex === index}>
+              <li key={result.id} role="presentation">
                 <button
                   type="button"
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={() => handleResultClick(result.url)}
                   onMouseEnter={() => setActiveIndex(index)}
+                  role="option"
                   className={`flex w-full flex-col items-start gap-1 px-4 py-3 text-left transition-colors min-h-[44px] ${
                     activeIndex === index 
                       ? 'bg-blue-600/20 text-white' 
