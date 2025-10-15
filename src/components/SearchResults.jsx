@@ -33,7 +33,7 @@ const SearchResults = () => {
 
   // Get query from URL and perform search
   useEffect(() => {
-    if (typeof window === 'undefined' || !searchIndex) return;
+    if (typeof window === 'undefined' || !searchIndex || documents.length === 0) return;
 
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('q') || '';
@@ -41,14 +41,33 @@ const SearchResults = () => {
 
     if (searchQuery.trim() && searchIndex) {
       try {
-        const searchResults = searchIndex.search(searchQuery);
-        const matchedDocs = searchResults.map(result => {
-          const doc = documents.find(d => d.id === result.ref);
-          return {
-            ...doc,
-            score: result.score,
-          };
-        });
+        // Use wildcard search for better results
+        const searchTerm = searchQuery.trim();
+        let searchResults = [];
+        
+        try {
+          // Try exact search first
+          searchResults = searchIndex.search(searchTerm);
+        } catch {
+          // If exact search fails, try with wildcard
+          try {
+            searchResults = searchIndex.search(`${searchTerm}*`);
+          } catch {
+            // If that fails too, try fuzzy search
+            searchResults = searchIndex.search(`${searchTerm}~1`);
+          }
+        }
+        
+        const matchedDocs = searchResults
+          .map(result => {
+            const doc = documents.find(d => d.id === result.ref);
+            return doc ? {
+              ...doc,
+              score: result.score,
+            } : null;
+          })
+          .filter(Boolean);
+          
         setResults(matchedDocs);
       } catch (err) {
         console.error('Search error:', err);

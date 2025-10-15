@@ -2,16 +2,17 @@
 export const prerender = true;
 
 import matter from 'gray-matter';
+import lunr from 'lunr';
 
-// Utility: derive the final route URL from a source file path in /src/pages
+// Utility: derive the final route URL from a source file path
 function filePathToRoute(filePath: string): string {
-  // Examples:
-  // /src/pages/index.md -> /
-  // /src/pages/blog/index.mdx -> /blog/
-  // /src/pages/docs/getting-started.astro -> /docs/getting-started/
+  // Handle both /src/pages and /src/content/docs paths
   let rel = filePath
-    .replace(/^\/?src\/pages\//, '/')
+    .replace(/^\/?src\/(pages|content\/docs)\//, '/')
     .replace(/\.(md|mdx|astro)$/, '');
+
+  // Remove language prefix from content/docs paths (e.g., /en/home -> /home)
+  rel = rel.replace(/^\/(en|de|es|fr)\//, '/');
 
   if (rel.endsWith('/index')) {
     rel = rel.slice(0, -('/index'.length)) || '/';
@@ -61,50 +62,89 @@ function extractTitleAndHeadings(content: string, fmTitle?: string): { title: st
 }
 
 export async function GET() {
-  // Index only src/pages content (Markdown/MDX/Astro). Adjust globs if needed.
-  const files = import.meta.glob(['/src/pages/**/*.{md,mdx,astro}'], {
+  // Index both src/pages and src/content/docs
+  const pagesFiles = import.meta.glob(['/src/pages/**/*.{md,mdx,astro}'], {
     eager: true,
     as: 'raw',
   }) as Record<string, string>;
 
+  const docsFiles = import.meta.glob(['/src/content/docs/**/*.{md,mdx}'], {
+    eager: true,
+    as: 'raw',
+  }) as Record<string, string>;
+
+  // Combine both file sources
+  const allFiles = { ...pagesFiles, ...docsFiles };
+
   type SearchDoc = {
+    id: string;
     title: string;
     url: string;
-    headings: string[];
-    content: string; // Plain text, truncated for size
+    description: string;
+    content: string;
   };
 
   const docs: SearchDoc[] = [];
 
-  for (const [path, raw] of Object.entries(files)) {
+  for (const [path, raw] of Object.entries(allFiles)) {
     try {
-      // Parse frontmatter if present (md/mdx will have it; astro may or may not)
+      // Parse frontmatter if present
       const { content, data } = matter(raw);
       const { title, headings } = extractTitleAndHeadings(content, (data as any)?.title);
       const plain = toPlainText(content);
 
-      // Keep index small: truncate body text but still useful for matching/snippets
+      // Keep index small: truncate body text
       const MAX_LEN = 1200;
       const contentExcerpt = plain.slice(0, MAX_LEN);
+      
+      // Extract description
+      const description = (data as any)?.description || plain.slice(0, 200);
 
       const url = filePathToRoute(path.replace(/^\//, ''));
 
-      // Skip pages that are clearly non-user-facing (optional)
-      if (url.includes('404')) continue;
+      // Skip non-user-facing pages
+      if (url.includes('404') || url.includes('search-index')) continue;
+
+      // Create unique ID
+      const id = path.replace(/^\/src\//, '').replace(/\.(md|mdx|astro)$/, '');
 
       docs.push({
+        id,
         title,
         url,
-        headings,
+        description,
         content: contentExcerpt,
       });
-    } catch {
-      // Skip problematic files rather than failing the build
+    } catch (error) {
+      console.error(`Error processing ${path}:`, error);
       continue;
     }
   }
 
-  return new Response(JSON.stringify(docs), {
+  // Build Lunr index
+  const idx = lunr(function () {
+    this.field('title', { boost: 10 });
+    this.field('description', { boost: 5 });
+    this.field('content');
+    this.ref('id');
+
+    docs.forEach((doc) => {
+      this.add(doc);
+    });
+  });
+
+  // Return both the index and documents
+  const result = {
+    index: idx.toJSON(),
+    documents: docs.map((doc) => ({
+      id: doc.id,
+      title: doc.title,
+      description: doc.description,
+      url: doc.url,
+    })),
+  };
+
+  return new Response(JSON.stringify(result), {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': 'public, max-age=0, must-revalidate',
