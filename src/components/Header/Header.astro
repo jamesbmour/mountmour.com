@@ -3,6 +3,7 @@
 import AstroLogo from "./AstroLogo.astro";
 import SkipToContent from "./SkipToContent.astro";
 import SidebarToggle from "./SidebarToggle";
+import SearchBar from "./SearchBar";
 import LeftSidebar from "../LeftSidebar/LeftSidebar.astro";
 type Props = {
   currentPage: string;
@@ -36,8 +37,9 @@ const { currentPage } = Astro.props;
       </div>
     </div>
     <div
-      class="relative z-10 flex flex-grow pr-2 max-w-[150px] md:max-w-[300px]"
+      class="relative z-10 flex flex-grow justify-end items-center px-2 md:px-4"
     >
+      <SearchBar client:idle />
     </div>
   </nav>
 </header>
@@ -107,6 +109,25 @@ const { currentPage } = Astro.props;
     .logo {
       width: 6rem; 
       height: auto; 
+    }
+  }
+
+  /* Search bar responsiveness */
+  @media (max-width: 640px) {
+    header nav > div:last-child {
+      max-width: 180px;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 768px) {
+    header nav > div:last-child {
+      max-width: 280px;
+    }
+  }
+
+  @media (min-width: 769px) {
+    header nav > div:last-child {
+      max-width: 400px;
     }
   }
 </style>
