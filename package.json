@@ -5,15 +5,11 @@
   "private": true,
   "scripts": {
     "astro": "astro",
-    "prebuild": "npm run generate-search",
-    "build": "npm run build-search-index && astro build",
+    "build": "astro build",
     "check": "astro check",
-    "dev": "npm run generate-search && astro dev",
+    "dev": " astro dev",
     "preview": "astro preview",
     "start": "astro dev",
-    "build-search-index": "node src/scripts/build-search-index.js",
-    "generate-search": "node scripts/generate-search-index.mjs",
-
     "prettier:check": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --cache --write --plugin-search-dir=. .",
     "lint:scss": "stylelint \"src/**/*.{astro,scss}\""
@@ -22,9 +18,9 @@
     "@algolia/client-search": "^4.20.0",
     "@astrojs/check": "^0.9.4",
     "@astrojs/markdoc": "^0.11.4",
-    "@astrojs/preact": "^3.0.1",
+
     "@astrojs/react": "^3.6.2",
-    "@astrojs/starlight-docsearch": "^0.3.0",
+
     "@astrojs/svelte": "^4.0.0",
     "@astrojs/tailwind": "^5.1.1",
     "@docsearch/css": "^3.5.2",
@@ -52,7 +48,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.445.0",
     "lunr": "^2.3.9",
-    "preact": "^10.19.2",
+
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.5",

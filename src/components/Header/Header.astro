@@ -1,10 +1,11 @@
 ---
+import AlgoliaSearch from './AlgoliaSearch.jsx';
 import { getLanguageFromURL } from "../../languages";
 import AstroLogo from "./AstroLogo.astro";
 import SkipToContent from "./SkipToContent.astro";
-import SidebarToggle from './SidebarToggle';
-import ThemeToggleButton from '../RightSidebar/ThemeToggleButton';
-import LanguageSelect from './LanguageSelect';
+import SidebarToggle from './SidebarToggle.jsx';
+import ThemeToggleButton from '../RightSidebar/ThemeToggleButton.jsx';
+import LanguageSelect from './LanguageSelect.jsx';
 import LeftSidebar from "../LeftSidebar/LeftSidebar.astro";
 
 type Props = {
@@ -43,12 +44,12 @@ const lang = getLanguageFromURL(currentPage);
     >
       <!-- Search Bar - visible on all devices -->
       <div class="flex-grow max-w-md">
-        <div id="search-bar-container"></div>
+        <AlgoliaSearch client:only="react" />
       </div>
       
       <div class="hidden items-center gap-2 md:flex">
-        <LanguageSelect lang={lang} client:only="preact" />
-        <ThemeToggleButton client:only="preact" />
+        <LanguageSelect lang={lang} client:only="react" />
+        <ThemeToggleButton client:only="react" />
       </div>
     </div>
   </nav>
@@ -63,18 +64,7 @@ const lang = getLanguageFromURL(currentPage);
 </div>
 
 <script>
-  import SearchBar from './SearchBar';
-  import { createRoot } from 'react-dom/client';
-  import React from 'react';
-
   document.addEventListener("DOMContentLoaded", () => {
-    // Render SearchBar
-    const searchContainer = document.getElementById('search-bar-container');
-    if (searchContainer) {
-      const root = createRoot(searchContainer);
-      root.render(React.createElement(SearchBar));
-    }
-
     // Mobile menu logic
     const mobileMenu = document.getElementById("mobile-sidebar") as HTMLElement | null;
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
