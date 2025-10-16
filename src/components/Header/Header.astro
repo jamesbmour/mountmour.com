@@ -43,12 +43,12 @@ const lang = getLanguageFromURL(currentPage);
       class="relative z-10 flex flex-grow items-center justify-end gap-2 px-2 md:px-4"
     >
       <!-- Search Bar - visible on all devices -->
-      <div class="flex-grow max-w-md">
+      <!-- <div class="flex-grow max-w-md">
         <AlgoliaSearch client:only="react" />
-      </div>
+      </div> -->
       
       <div class="hidden items-center gap-2 md:flex">
-        <LanguageSelect lang={lang} client:only="react" />
+        <!-- <LanguageSelect lang={lang} client:only="react" /> -->
         <ThemeToggleButton client:only="react" />
       </div>
     </div>

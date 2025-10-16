@@ -1,14 +1,27 @@
-import React from 'react';
-import DocSearch from '@docsearch/react';
+import React, { useEffect } from 'react';
+import docsearch from '@docsearch/js';
 import '@docsearch/css';
 import { ALGOLIA } from '../../consts';
 
-export default function AlgoliaSearch() {
+const AlgoliaSearch = () => {
+  useEffect(() => {
+    console.log("Initializing DocSearch...");
+    try {
+      docsearch({
+        appId: ALGOLIA.appId,
+        apiKey: ALGOLIA.apiKey,
+        indexName: ALGOLIA.indexName,
+        container: '#docsearch',
+      });
+      console.log("DocSearch initialized successfully.");
+    } catch (error) {
+      console.error("Error initializing DocSearch:", error);
+    }
+  }, []);
+
   return (
-    <DocSearch
-      appId={ALGOLIA.appId}
-      apiKey={ALGOLIA.apiKey}
-      indexName={ALGOLIA.indexName}
-    />
+    <div id="docsearch"></div>
   );
-}
+};
+
+export default AlgoliaSearch;
