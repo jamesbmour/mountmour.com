@@ -5,12 +5,15 @@
   "private": true,
   "scripts": {
     "astro": "astro",
+    "prebuild": "npm run generate-search",
     "build": "npm run build-search-index && astro build",
     "check": "astro check",
-    "dev": "astro dev",
+    "dev": "npm run generate-search && astro dev",
     "preview": "astro preview",
     "start": "astro dev",
     "build-search-index": "node src/scripts/build-search-index.js",
+    "generate-search": "node scripts/generate-search-index.mjs",
+
     "prettier:check": "prettier --check --plugin-search-dir=. .",
     "format": "prettier --cache --write --plugin-search-dir=. .",
     "lint:scss": "stylelint \"src/**/*.{astro,scss}\""
