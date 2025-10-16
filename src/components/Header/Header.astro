@@ -1,16 +1,19 @@
 ---
-// import { getLanguageFromURL, KNOWN_LANGUAGE_CODES } from "../../languages";
+import { getLanguageFromURL } from "../../languages";
 import AstroLogo from "./AstroLogo.astro";
 import SkipToContent from "./SkipToContent.astro";
-import SidebarToggle from "./SidebarToggle";
-import SearchBar from "./SearchBar";
+import SidebarToggle from './SidebarToggle';
+import Search from './Search';
+import ThemeToggleButton from '../RightSidebar/ThemeToggleButton';
+import LanguageSelect from './LanguageSelect';
 import LeftSidebar from "../LeftSidebar/LeftSidebar.astro";
+
 type Props = {
   currentPage: string;
 };
 
 const { currentPage } = Astro.props;
-// const lang = getLanguageFromURL(currentPage);
+const lang = getLanguageFromURL(currentPage);
 ---
 
 <header
@@ -39,7 +42,10 @@ const { currentPage } = Astro.props;
     <div
       class="relative z-10 flex flex-grow justify-end items-center px-2 md:px-4"
     >
-      <SearchBar client:idle />
+      <div class="hidden md:flex items-center">
+        <Search client:load />
+
+      </div>
     </div>
   </nav>
 </header>
