@@ -3,7 +3,6 @@ import { getLanguageFromURL } from "../../languages";
 import AstroLogo from "./AstroLogo.astro";
 import SkipToContent from "./SkipToContent.astro";
 import SidebarToggle from './SidebarToggle';
-import Search from './Search';
 import ThemeToggleButton from '../RightSidebar/ThemeToggleButton';
 import LanguageSelect from './LanguageSelect';
 import LeftSidebar from "../LeftSidebar/LeftSidebar.astro";
@@ -42,10 +41,7 @@ const lang = getLanguageFromURL(currentPage);
     <div
       class="relative z-10 flex flex-grow justify-end items-center px-2 md:px-4"
     >
-      <div class="hidden md:flex items-center">
-        <Search client:load />
 
-      </div>
     </div>
   </nav>
 </header>
@@ -121,19 +117,30 @@ const lang = getLanguageFromURL(currentPage);
   /* Search bar responsiveness */
   @media (max-width: 640px) {
     header nav > div:last-child {
-      max-width: 180px;
+      max-width: 200px;
+    }
+
+    header nav > div:last-child form {
+      max-width: 100%;
     }
   }
 
   @media (min-width: 641px) and (max-width: 768px) {
     header nav > div:last-child {
-      max-width: 280px;
+      max-width: 300px;
     }
   }
 
   @media (min-width: 769px) {
     header nav > div:last-child {
-      max-width: 400px;
+      max-width: 450px;
+    }
+  }
+
+  /* Ensure search input is visible on mobile */
+  @media (max-width: 768px) {
+    header nav > div:last-child form input {
+      font-size: 14px;
     }
   }
 </style>
